@@ -11,13 +11,46 @@ time.sleep(10) # waiting 10sec for iframe to load
 print(time)
 #print(driver.find_element(By.XPATH("//a"))  )
 try:
-    print(driver.find_element_by_xpath("//*[@id='directory_list']/div/div[1]/div/div[1]/h4").get_attribute("innerHTML"))
-    print(driver.find_element_by_xpath("//*[@id='directory_list']/div/div[2]/div/div[1]/h4").get_attribute("innerHTML"))
-    print(driver.find_element_by_xpath('//*[@id="directory_list"]/div/div[3]/div/div[1]/h4').get_attribute("innerHTML"))
+    ## name   second div changes
+    for i in range(10):
+        try:
+            print(driver.find_element_by_xpath('//*[@id="directory_list"]/div/div[ '+ str(i) +']/div/div[1]/h4').get_attribute(  "innerHTML"))
 
-    print(driver.find_element_by_xpath('//*[@id="directory_list"]/div/div[6]/div/div[2]/div[2]/table/tbody/tr[2]/td[2]/a').get_attribute("innerHTML"))
+        except:
+            print("error1 - NO name ")
+        ## number
+        try:
+             print(driver.find_element_by_xpath('//*[@id="directory_list"]/div/div['+ str(i) + ']/div/div[2]/div[2]/table/tbody/tr[2]/td[2]/a').get_attribute("innerHTML"))
+        except:
+            print("error2 - no phone")
+           ## email
+        try:
+               print(driver.find_element_by_xpath(' // *[ @ id = "directory_list"] / div / div['+ str(i) + '] / div / div[2] / div[2] / table / tbody / tr[3] / td[2] / a').get_attribute("innerHTML"))
 
-except:
+        except:
+            print("error3 - no email")
+
+    ## name
+    print(driver.find_element_by_xpath(' // *[ @ id = "directory_list"] / div / div[4] / div / div[1] / h4').get_attribute("innerHTML"))
+    ## number
+    print(driver.find_element_by_xpath( '//*[@id="directory_list"]/div/div[4]/div/div[2]/div[2]/table/tbody/tr[2]/td[2]/a').get_attribute("innerHTML"))
+   ## email
+    print(driver.find_element_by_xpath(' // *[ @ id = "directory_list"] / div / div[4] / div / div[2] / div[2] / table / tbody / tr[3] / td[2] / a').get_attribute("innerHTML"))
+   ##
+
+    ## name
+    print(driver.find_element_by_xpath(
+        ' // *[ @ id = "directory_list"] / div / div[6] / div / div[1] / h4').get_attribute("innerHTML"))
+    ## number
+    print(driver.find_element_by_xpath(
+        '//*[@id="directory_list"]/div/div[6]/div/div[2]/div[2]/table/tbody/tr[2]/td[2]/a').get_attribute("innerHTML"))
+    ## email
+    print(driver.find_element_by_xpath(
+        ' // *[ @ id = "directory_list"] / div / div[6] / div / div[2] / div[2] / table / tbody / tr[3] / td[2] / a').get_attribute(
+        "innerHTML"))
+## print(driver.find_element_by_xpath( '//*[@id="directory_list"]/div/div[8]/div/div[2]/div[2]/table/tbody/tr[2]/td[2]/a').get_attribute("innerHTML"))
+
+except AttributeError:
     print("fail")
 
 #print(driver.find_element_by_xpath("/html/body/div[3]/div/div/div[1]/div/div[1]/div/div[1]/h4").get_attribute("innerHTML"))
