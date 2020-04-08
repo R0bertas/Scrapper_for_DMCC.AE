@@ -19,14 +19,13 @@ f.write("ID, Name, Phone, Email" )
 f.write( "\n")
 # waiting 10sec for iframe to load
 time.sleep(10)
-
-#print(driver.find_element(By.XPATH("//a"))  )
-try:
-    ## name   second div changes
+def scrapedata():
+    time.sleep(1)
+    comp_name = ""
+    number = ""
+    email = ""
     for i in range(11):
-        comp_name=""
-        number=""
-        email=""
+
         try:
            comp_name =driver.find_element_by_xpath('//*[@id="directory_list"]/div/div[ '+ str(i) +']/div/div[1]/h4').get_attribute(  "innerHTML")
 
@@ -48,6 +47,18 @@ try:
             print("error3 - no email")
         f.write ( str(i) + "," + str(comp_name) + "," +str(number) + ","+ str(email)+ "\n")
 
+
+try:
+    ## name   second div changes
+    for i in range(20):
+        time.sleep(1)
+        scrapedata()
+        driver.find_element_by_xpath("/html/body/div[5]/div/ul/li[13]/a").click()
+
+    #driver.find_element_by_xpath("/html/body/div[5]/div/ul/li[13]/a").click()
+   # print(driver.find_element_by_xpath("/html/body/div[5]/div/ul/li[13]/a").click())
+    #print(driver.find_element_by_xpath("/html/body/div[5]/div/ul/li[4]/a").get_attribute("innerHTML"))
+    #print(driver.find_element_by_xpath("/html/body/div[5]/div/ul/li[5]/a").get_attribute("innerHTML"))
 except :
     print("fail")
     # if exception occurs we close our csv file
