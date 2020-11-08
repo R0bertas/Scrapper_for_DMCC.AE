@@ -1,2 +1,2 @@
 # Scrapper_for_DMCC.AE
-Based on python with Selentium
+Based on python with Selenium
